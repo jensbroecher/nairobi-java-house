@@ -178,7 +178,7 @@ $(document).ready(function(){
         password=$("#password").val();
          $.ajax({
             type: "POST",
-            url: "http://kushirikiana.com/burudani/music/ajaxregistrationtest/ajax_login/login.php",
+            url: "http://enunua.com/njh/login.php",
             data: "name="+username+"&pwd="+password,
             success: function(html){
               if(html=='true')
@@ -222,7 +222,7 @@ function f2(input)
 
   <div class="err" id="add_err"></div>
   
-  <form id="loginform" action="login.php">
+  <form id="loginform">
   
   <div style="display:none">
   <div onClick="saveContents()">
@@ -246,7 +246,7 @@ function f2(input)
     
     <div id="moreoptions" class="animated fadeIn" style="-webkit-animation-delay:2s;">
 	<input type="button" id="cancel_hide" value="No Account?" />
-    <input onclick="navigator.app.loadUrl('http://kushirikiana.com/burudani/music/forgotpass/forgot.php', { openExternal:true });" type="button" id="forgot" value="Forgot?" />
+    <input onclick="navigator.app.loadUrl('http://enunua.com/njh/forgot.php', { openExternal:true });" type="button" id="forgot" value="Forgot?" />
     </div>
   </form>
     </div>
