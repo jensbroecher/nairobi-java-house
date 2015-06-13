@@ -5,6 +5,8 @@ body {
 	color: #741112;
 	background-color: #741112;
 	text-align: center;
+	margin: 0px;
+	padding: 0px;
 }
 #logo {
 	width: 60%;
@@ -22,30 +24,43 @@ body {
 	padding: 20px;
 	margin-top: 5px;
 }
-button {
-	color: #000;
-	background-color: #FFF;
+.account {
+	background-color: #FDCC7E;
+	position: absolute;
+	width: 80%;
+	top: 15%;
+	margin-left: 10%;
+	display: none;
+	z-index: 1;
+}
+.accountinside {
+	border: 10px solid #B3393C;
+	padding: 10px;
+	text-align: left;
+}
+.jvhbutton {
+	color: #FFF;
+	background-color: #B3393C;
 	text-align: center;
-	width: 100%;
+	width: 80%;
 	display: block;
-	border: 2px solid #4285F4;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-tap-highlight-color: transparent;
 	transition: all 0.5s;
-	line-height: 250%;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	line-height: 200%;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	margin-right: auto;
 	margin-left: auto;
 }
-button:active {
+jvhbutton:active {
   transition: all 0.5s;
 }
-button:focus {
+jvhbutton:focus {
     outline: none;
 }
 #loadingindicator {
-	background-color: #E2E2E2;
+	background-color: #1C1B1B;
 	position: absolute;
 	z-index: 100;
 	height: 100%;
@@ -54,6 +69,6 @@ button:focus {
 	top: 0px;
 	text-align: center;
 }
-#loadingindicator img {
+#loadingindicator #spinner {
 	margin-top: 100px;
 }
