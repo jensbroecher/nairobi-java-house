@@ -30,14 +30,52 @@ function nextscreen_login() {
 }
 </script>
 
+<script>
+
+function onDeviceReady() {
+
+}
+
+function lpush() {
+window.plugin.notification.local.add({
+    id:         1,
+    message:    'Welcome to NAIROBI JAVA HOUSE!',
+    title:      'Good to see you!',
+    autoCancel: true,
+    ongoing:    false
+});
+}
+ 
+$(document).ready(function(){
+
+var whatstheusername = localStorage.getItem('myname');		
+
+if(! whatstheusername){
+ // alert("nicht def");
+ }
+else {
+  // alert("ja def");
+	top.location.href='mainmenu.html';
+}
+
+});
+
+function init () {
+	
+	lpush();
+	
+	// alert('wurdegeladen');
+	
+} 
+</script>
+
 </head>
 
 <div id="loadingindicator" style="display:none">
 <img id="spinner" src="282.gif">
 </div>
 
-<body>
-
+<body onload="init();">
 
 <div id="logobox" onClick="welcome();" class="animated zoomIn">
   <p><img id="logo" src="logo.png"></p>

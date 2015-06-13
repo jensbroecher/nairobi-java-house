@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <link href="animate.css" rel="stylesheet" type="text/css">
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="cookiescript.js"></script>
+        <script type="text/javascript" src="cdv-plugin-parse.js"></script>
+
+        
+        <script type="text/javascript" charset="utf-8">
+		
+
+    function onDeviceReady() {
+		
+    }
+
+ function checkonload() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener("online", onOnline, false);
+    document.addEventListener("offline", onOffline, false);
+	   
+	     function onOnline() {
+		document.getElementById('offlinenotice').className = 'animated fadeOutUp';
+        setTimeout(function(){document.getElementById('offlinenotice').style.display='none';},1000);
+    }
+ 
+    function onOffline() {
+        document.getElementById('offlinenotice').style.display='block';
+		document.getElementById('offlinenotice').className = 'animated fadeInDown';
+    }
+	
+	location.href = '#home';
+	
+}
+        
+    </script>
+    
+    <script>
+	
+	
+$(document).ready(function(){
+	
+
+	
+	$("#useremail").load("http://kushirikiana.com/njh/loaduseremail.php?username="+whatstheusername+"",function(responseTxt,statusTxt,xhr){
+    });
+
+
+});
+
+
+</script>
+
+</head>
+
+<body onLoad="checkonload();">
+
+<div id="usermail">Usermail</div>
+
+<div id="offlinenotice">Is Offline</div>
+
+</body>
+</html>
