@@ -2,7 +2,6 @@
 <head>
 <meta charset="utf-8" />
 
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="cookiescript.js"></script>
 
@@ -163,7 +162,7 @@ input {
 	margin-left: 4%;
 }
 </style>
-<link href="css/animate.css" rel="stylesheet" type="text/css">
+<link href="animate.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#login_a").click(function(){
@@ -178,13 +177,13 @@ $(document).ready(function(){
         password=$("#password").val();
          $.ajax({
             type: "POST",
-            url: "http://kushirikiana.com/njhlogin.php",
+            url: "http://kushirikiana.com/njh/login.php",
             data: "name="+username+"&pwd="+password,
             success: function(html){
               if(html=='true')
               {
 			saveContents();
-			window.location = "gobeforeframe.html";
+			window.location = "mainmenu.html";
               }
               else
               {
@@ -246,7 +245,7 @@ function f2(input)
     
     <div id="moreoptions" class="animated fadeIn" style="-webkit-animation-delay:2s;">
 	<input type="button" id="cancel_hide" value="No Account?" />
-    <input onclick="navigator.app.loadUrl('http://kushirikiana.com/njh/forgot.php', { openExternal:true });" type="button" id="forgot" value="Forgot?" />
+    <input onclick="alert('This option is not available yet');" type="button" id="forgot" value="Forgot?" />
     </div>
   </form>
     </div>

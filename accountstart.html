@@ -126,6 +126,11 @@ input {
 
 <div style="padding:20px;">
 
+<div id="load">
+</div>
+<div id="box">
+</div> 
+
 <form class="animated fadeInDownBig" method="post" action="" id="form2">
 <div class="line">USERNAME<input maxlength="20" onKeyUp="valid(this)" onBlur="saveContentsAccountCreate();valid(this)" onChange="f2(this);" type="text" name="username" id="username" minlength="3"  required /></div>
 <div class="line">PASSWORD<input maxlength="20" type="password" name="password" id="password" minlength="3" required /></div>
@@ -189,9 +194,12 @@ type: "POST",
 url: "http://kushirikiana.com/njh/ajax.php",
 data: "username="+username+"&password="+password+"&phone="+phone+"&email="+email ,
 success: function(html){
-
+$("#load").css('display','block');
+$("#form2").css('display','none');
+$("#box").css('display','none');
 $("#load").fadeOut('500', function(){
-alert('Registration succesful');
+$("#load").css('display','none');
+$("#box").html(html).show('slow');
 });
 }
 });

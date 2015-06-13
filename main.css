@@ -59,7 +59,7 @@ jvhbutton:focus {
     outline: none;
 }
 #loadingindicator {
-	background-color: #FFFFFF;
+	background-color: #1D1D1C;
 	position: absolute;
 	z-index: 100;
 	height: 100%;
@@ -73,6 +73,7 @@ jvhbutton:focus {
 	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
+	-webkit-filter: invert(1);
 }
 .blur {
 	-webkit-filter: blur(8px);
