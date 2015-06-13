@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="main.css" rel="stylesheet" type="text/css">
+<link href="animate.min.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+function showindicator() {
+	document.getElementById("loadingindicator").className = "animated fadeIn";
+document.getElementById("loadingindicator").style.display = "block";
+}
+
+function letsgo() {
+	showindicator();
+	setTimeout(function(){
+	document.location.href = 'locate.html';
+	}, 3000);
+}
+</script>
+
+</head>
+
+<div id="loadingindicator" style="display:none">
+<img src="282.gif" width="120">
+</div>
+
+<body>
+<div class="animated zoomIn">
+<img id="logo" src="logo.png">
+</div>
+
+</body>
+</html>
