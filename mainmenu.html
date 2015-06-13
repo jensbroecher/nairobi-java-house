@@ -17,21 +17,21 @@
         <script type="text/javascript" charset="utf-8">
 		
 
-    function onDeviceReady() {
+function onDeviceReady() {
 		
-    }
+}
 
- function checkonload() {
+function checkonload() {
     document.addEventListener("deviceready", onDeviceReady, false);
     document.addEventListener("online", onOnline, false);
     document.addEventListener("offline", onOffline, false);
 	   
-	     function onOnline() {
+function onOnline() {
 		document.getElementById('offlinenotice').className = 'animated fadeOutUp';
         setTimeout(function(){document.getElementById('offlinenotice').style.display='none';},1000);
-    }
+}
  
-    function onOffline() {
+function onOffline() {
         document.getElementById('offlinenotice').style.display='block';
 		document.getElementById('offlinenotice').className = 'animated fadeInDown';
     }
@@ -47,7 +47,7 @@
 	
 $(document).ready(function(){
 	
-
+  whatstheusername = localStorage.getItem('myname');
 	
 	$("#useremail").load("http://kushirikiana.com/njh/loaduseremail.php?username="+whatstheusername+"",function(responseTxt,statusTxt,xhr){
     });
@@ -62,9 +62,15 @@ $(document).ready(function(){
 
 <body onLoad="checkonload();">
 
-<div id="usermail">Usermail</div>
+<div id="currentaccountuser">
+  <script>
+  document.write(localStorage.myname);
+  </script>
+</div>
 
-<div id="offlinenotice">Is Offline</div>
+<div id="useremail">Usermail</div>
+
+<div id="offlinenotice" style="display:none">Is Offline</div>
 
 </body>
 </html>
