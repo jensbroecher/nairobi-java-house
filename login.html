@@ -178,7 +178,7 @@ $(document).ready(function(){
         password=$("#password").val();
          $.ajax({
             type: "POST",
-            url: "http://enunua.com/njh/login.php",
+            url: "http://kushirikiana.com/njhlogin.php",
             data: "name="+username+"&pwd="+password,
             success: function(html){
               if(html=='true')
@@ -246,7 +246,7 @@ function f2(input)
     
     <div id="moreoptions" class="animated fadeIn" style="-webkit-animation-delay:2s;">
 	<input type="button" id="cancel_hide" value="No Account?" />
-    <input onclick="navigator.app.loadUrl('http://enunua.com/njh/forgot.php', { openExternal:true });" type="button" id="forgot" value="Forgot?" />
+    <input onclick="navigator.app.loadUrl('http://kushirikiana.com/njh/forgot.php', { openExternal:true });" type="button" id="forgot" value="Forgot?" />
     </div>
   </form>
     </div>

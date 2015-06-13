@@ -158,11 +158,11 @@ $("#form2").validate({
     email: {
       required: true,
       email: true,
-      remote: "http://enunua.com/njh/email-check.php"
+      remote: "http://kushirikiana.com/njh/email-check.php"
 	  },
 	 username: {
       required: true,
-      remote: "http://enunua.com/njh/user-check.php"
+      remote: "http://kushirikiana.com/njh/user-check.php"
 	  }
    },
 	messages: {
@@ -186,7 +186,7 @@ var phone=$('#phone').val();
 var email=$('#email').val();
 $.ajax({
 type: "POST",
-url: "http://enunua.com/njh/ajax.php",
+url: "http://kushirikiana.com/njh/ajax.php",
 data: "username="+username+"&password="+password+"&phone="+phone+"&email="+email ,
 success: function(html){
 $("#load").css('display','block');
