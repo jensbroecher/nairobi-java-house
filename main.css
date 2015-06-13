@@ -9,20 +9,19 @@ body {
 	padding: 0px;
 }
 #logo {
-	width: 60%;
+	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
 	background-color: #181717;
-	padding: 20px;
-	margin-top: 20px;
+	padding: 15px;
+	margin-top: 10px;
 }
 #rewards {
-	width: 60%;
+	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
 	background-color: #181717;
-	padding: 20px;
-	margin-top: 5px;
+	padding: 15px;
 }
 .account {
 	background-color: #FDCC7E;
@@ -71,4 +70,7 @@ jvhbutton:focus {
 }
 #loadingindicator #spinner {
 	margin-top: 100px;
+}
+.blur {
+	-webkit-filter: blur(8px);
 }
