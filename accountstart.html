@@ -117,7 +117,7 @@ input {
 	margin-left: auto;
 }
 </style>
-<link href="css/animate.css" rel="stylesheet" type="text/css">
+<link href="animate.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -189,12 +189,9 @@ type: "POST",
 url: "http://kushirikiana.com/njh/ajax.php",
 data: "username="+username+"&password="+password+"&phone="+phone+"&email="+email ,
 success: function(html){
-$("#load").css('display','block');
-$("#form2").css('display','none');
-$("#box").css('display','none');
+
 $("#load").fadeOut('500', function(){
-$("#load").css('display','none');
-$("#box").html(html).show('slow');
+alert('Registration succesful');
 });
 }
 });
