@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="cookiescript.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<style type="text/css">
+* {
+ -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+*:focus, *:active {
+	outline: none;
+}
+#logo {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	margin-top: 15px;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	background-position: center top;
+	background-color: #440002;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFF;
+	background-image: url(img/guitar.png);
+	background-size: 100%;
+}
+
+#load {
+display:none;
+width:500px;
+height:500px;
+}
+label {
+	display: block;
+	color: #FFF;
+	background-color: #A00700;
+	font-size: 12px;
+	font-weight: normal;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 8px;
+}
+input {
+
+}
+.line {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	padding-bottom: 5px;
+	letter-spacing: 1px;
+	text-transform: lowercase;
+	margin-bottom: 10px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 0px;
+	padding-left: 0px;
+	width: 80%;
+	clip: rect(auto,80%,auto,auto);
+	overflow: hidden;
+}
+.line input {
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	display: block;
+	padding: 8px;
+	width: 100%;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.send {
+	background-color: rgba(255,255,255,0.6);
+	width: 40%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	color: #000;
+	text-align: center;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	font-size: 18px;
+	text-decoration: none;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	text-transform: uppercase;
+	border-radius: 3px;
+}
+#cancel_hide, #forgot {
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	display: block;
+	width: 40%;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding: 8px;
+	text-transform: uppercase;
+	border-radius: 3px;
+}
+#add_err {
+	text-transform: lowercase;
+	background-color: #A00700;
+	margin-bottom: 20px;
+	color: #FFF;
+	font-size: 12px;
+	line-height: 200%;
+	text-align: center;
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+.whitelayer {
+	background-color: #440002;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 1;
+	color: #440002;
+	margin-right: auto;
+	margin-left: auto;
+}
+#moreoptions, #mainoptions {
+	background-color: rgba(255,255,255,0.2);
+	padding-bottom: 20px;
+	border-radius: 5px;
+	padding-top: 3px;
+	margin-top: 25px;
+	margin-right: 4%;
+	margin-left: 4%;
+}
+</style>
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#login_a").click(function(){
+         $("#user_name").focus();
+    });
+	$("#cancel_hide").click(function(){
+       window.location = "accountstart.html";
+   });
+   $("#login").click(function(){
+   // saveContents();
+        username=$("#user_name").val();
+        password=$("#password").val();
+         $.ajax({
+            type: "POST",
+            url: "http://kushirikiana.com/burudani/music/ajaxregistrationtest/ajax_login/login.php",
+            data: "name="+username+"&pwd="+password,
+            success: function(html){
+              if(html=='true')
+              {
+			saveContents();
+			window.location = "gobeforeframe.html";
+              }
+              else
+              {
+                    $("#add_err").html("Wrong username or password.");
+              }
+            },
+            beforeSend:function()
+			{
+                 $("#add_err").html("Loading...")
+            }
+        });
+         return false;
+    });
+});
+</script>
+
+<script type="text/JavaScript">
+function valid(f) {
+!(/^[a-z0-9]*$/i).test(f.value)?f.value = f.value.replace(/[^a-z0-9]/ig,''):null;
+}
+
+
+function f2(input)
+{
+    string = input.value;
+    string = string.toLowerCase();
+	input.value = string;
+}
+</script>
+
+</head>
+<body>
+
+<div class="whitelayer animated fadeOutLeftBig" style="-webkit-animation-delay:1s;">-</div>
+
+<div id="logo" class="animated bounceIn" style="-webkit-animation-delay:1s;">
+<img src="img/logo_on_dark.png" height="50">
+</div>
+
+<div id="login_form" class="animated fadeInDownBig">
+  <div class="err" id="add_err"></div>
+  <form id="loginform" action="login.php">
+  
+  <div style="display:none">
+  <div onClick="saveContents()">
+  SAVE
+  </div>
+  
+  <div onClick="restoreContents()">
+  READ
+  </div>
+  
+  <div onClick="localStorage.clear();">
+  DELETE
+  </div>
+  </div>
+	
+    <div id="mainoptions" class="animated fadeIn" style="-webkit-animation-delay:1s; padding-top:20px;">		
+    <div class="line">USERNAME<input onBlur="valid(this)" onKeyUp="valid(this)" onchange="f2(this);" maxlength="20" type="text" id="user_name" name="user_name"></div>
+    <div class="line">PASSWORD<input maxlength="20" type="password" id="password" name="password" /></div>	
+    <input class="send" type="submit" id="login" value="Go" />
+    </div>
+    
+    <div id="moreoptions" class="animated fadeIn" style="-webkit-animation-delay:2s;">
+	<input type="button" id="cancel_hide" value="No Account?" />
+    <input onclick="navigator.app.loadUrl('http://kushirikiana.com/burudani/music/forgotpass/forgot.php', { openExternal:true });" type="button" id="forgot" value="Forgot?" />
+    </div>
+  </form>
+    </div>
+</body>
+</html>

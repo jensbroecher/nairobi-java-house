@@ -1,0 +1,214 @@
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.validate.min.js"></script>
+<script type="text/javascript" src="cookiescript.js"></script>
+
+<style type="text/css">
+* {
+ -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+*:focus, *:active {
+	outline: none;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	background-position: center top;
+	background-color: #440002;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFF;
+	background-image: url(img/turntable.png);
+	background-size: 100%;
+}
+
+* {
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
+}   
+
+h2 {
+	text-transform: lowercase;
+}
+
+#load {
+display:none;
+width:500px;
+height:500px;
+}
+label {
+	display: block;
+	color: #FFF;
+	background-color: #A00700;
+	font-size: 12px;
+	font-weight: normal;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 8px;
+}
+input {
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 100%;
+	padding: 8px;
+	display: block;
+}
+.line {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	padding-bottom: 5px;
+	letter-spacing: 1px;
+	text-transform: lowercase;
+	margin-bottom: 10px;
+}
+#tandc {
+	background-color: #000;
+	width: 96%;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-right: 2%;
+	padding-bottom: 5px;
+	padding-left: 2%;
+	font-size: 12px;
+	text-align: center;
+}
+.send {
+	background-color: rgba(255,255,255,0.6);
+	width: 60%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	color: #000;
+	text-align: center;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	font-size: 18px;
+	text-decoration: none;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 3px;
+}
+.whitelayer {
+	background-color: #440002;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 1;
+	color: #440002;
+	margin-right: auto;
+	margin-left: auto;
+}
+</style>
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="whitelayer animated fadeOutLeftBig" style="-webkit-animation-delay:1s;">-</div>
+
+<div style="padding:20px;">
+
+<div id="load" style="">
+</div>
+<div id="box">
+</div> 
+<form class="animated fadeInDownBig" method="post" action="" id="form2">
+<div class="line">USERNAME<input maxlength="20" onKeyUp="valid(this)" onBlur="saveContentsAccountCreate();valid(this)" onChange="f2(this);" type="text" name="username" id="username" minlength="3"  required /></div>
+<div class="line">PASSWORD<input maxlength="20" type="password" name="password" id="password" minlength="3" required /></div>
+<div class="line">PHONE<input maxlength="30" type="tel" name="phone" id="phone" required /></div>
+<div class="line">E-MAIL<input maxlength="30" onChange="f2(this);" type="email" name="email" id="email" /></div>
+<div id="tandc" onClick="document.location.href= 'tandc.html';">By signing up you agree to the Terms of Use and Privacy Policy. Tap to view.</div>
+<input name="submit" type="submit" class="send" id="submit" value="Sign up" />
+</form>
+
+</div>
+
+<script type="text/JavaScript">
+function valid(f) {
+!(/^[a-z0-9]*$/i).test(f.value)?f.value = f.value.replace(/[^a-z0-9]/ig,''):null;
+}
+
+
+function f2(input)
+{
+    string = input.value;
+    string = string.toLowerCase();
+	input.value = string;
+}
+</script>
+
+<script type="text/javascript">
+
+$("#form2").validate({
+	rules: {
+    email: {
+      required: true,
+      email: true,
+      remote: "http://kushirikiana.com/burudani/music/ajaxregistrationtest/validate/email-check.php"
+	  },
+	 username: {
+      required: true,
+      remote: "http://kushirikiana.com/burudani/music/ajaxregistrationtest/validate/user-check.php"
+	  }
+   },
+	messages: {
+	email: {
+	required: "This field is required.",
+      email: "Invalid Email Address.",
+      remote: "E-Mail already in use."
+			},
+	username: {
+	required: "Username is required.",
+      remote: "Username in use."
+			}
+  },
+
+  
+  submitHandler: function(form) {
+var username=$('#username').val();
+var password=$('#password').val();
+var password1=$('#password1').val();
+var phone=$('#phone').val();
+var email=$('#email').val();
+$.ajax({
+type: "POST",
+url: "http://kushirikiana.com/burudani/music/ajaxregistrationtest/ajax.php",
+data: "username="+username+"&password="+password+"&phone="+phone+"&email="+email ,
+success: function(html){
+$("#load").css('display','block');
+$("#form2").css('display','none');
+$("#box").css('display','none');
+$("#load").fadeOut('500', function(){
+$("#load").css('display','none');
+$("#box").html(html).show('slow');
+});
+}
+});
+return false;
+
+
+  }
+});
+</script>
+
+</body>
+</html>
