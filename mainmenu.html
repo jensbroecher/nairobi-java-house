@@ -6,6 +6,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
         <link href="animate.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+        body {
+	background-color: #1C1B1B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+        .userdetails {
+	background-color: #FECE7C;
+	padding: 5px;
+}
+.jvhbutton {
+	color: #FFF;
+	background-color: #B3393C;
+	text-align: center;
+	width: 80%;
+	display: block;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+	transition: all 0.5s;
+	line-height: 200%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#status {
+	color: #000;
+	background-color: #FECE7C;
+	padding: 5px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+jvhbutton:active {
+  transition: all 0.5s;
+}
+jvhbutton:focus {
+    outline: none;
+}
+        </style>
 
         <!-- jQuery -->
         <script type="text/javascript" src="jquery.js"></script>
@@ -51,26 +90,48 @@ $(document).ready(function(){
 	
 	$("#useremail").load("http://kushirikiana.com/njh/loaduseremail.php?username="+whatstheusername+"",function(responseTxt,statusTxt,xhr){
     });
+	
+	$("#statuspoints").load("http://kushirikiana.com/njh/loaduserpoints.php?username="+whatstheusername+"",function(responseTxt,statusTxt,xhr){
+    });
 
 
 });
 
-
+function scancode() {
+	cordova.plugins.barcodeScanner.scan(
+      function (result) {
+          alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      }
+   );
+}
 </script>
 
 </head>
 
 <body onLoad="checkonload();">
 
-<div id="currentaccountuser">
+<div class="userdetails" id="currentaccountuser">
   <script>
   document.write(localStorage.myname);
   </script>
 </div>
 
-<div id="useremail">Usermail</div>
+
+
+<div class="userdetails" id="useremail"></div>
 
 <div id="offlinenotice" style="display:none">Is Offline</div>
+
+<div id="status">You currently have <span id="statuspoints"></span> points. Scan a QR code or enter manually to add more.</div>
+
+<div class="jvhbutton" onClick="scancode()();">Scan QR</div>
+<div class="jvhbutton" onClick="entercode();">Enter code from receipt</div>
 
 </body>
 </html>
