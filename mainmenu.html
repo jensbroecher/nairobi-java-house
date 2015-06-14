@@ -100,15 +100,25 @@ $(document).ready(function(){
 function scancode() {
 	cordova.plugins.barcodeScanner.scan(
       function (result) {
-          alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
+          alert("Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
+
+$.get( "http://kushirikiana.com/njh/add-points?&username="+whatstheusername+"&points="+result.text+"", function( data ) {
+		$("#statuspoints").load("http://kushirikiana.com/njh/loaduserpoints.php?username="+whatstheusername+"",function(responseTxt,statusTxt,xhr){
+    });
+	});
+		
+		
       }, 
       function (error) {
           alert("Scanning failed: " + error);
       }
    );
+}
+
+function entercode() {
+	alert('This is not yet supported');
 }
 </script>
 
