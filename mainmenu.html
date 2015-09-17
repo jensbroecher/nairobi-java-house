@@ -15,8 +15,10 @@
 #bodysun {
     background-image: url(sun.png);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #AC1F23;
 }
-        .userdetails {
+    .userdetails {
 	background-color: #FECE7C;
 	padding: 5px;
 }
@@ -94,6 +96,9 @@ jvhbutton:focus {
     font-size: 18px;
     font-weight: 400;
 }
+            #openmenu {
+            display: none;
+            }
 
 
 </style>
@@ -192,7 +197,15 @@ function restaurantpickergonext() {
 var table = prompt("Which table (number) are you seated on?", "");
 if (table != null) {
     alert('Great, you selected table number: '+table+'. Press OK to place your order now.');
+    showmenu();
 }
+}
+function showmenu() {
+document.getElementById("blurbg").style.display = "none";
+document.getElementById("restaurantlist").style.display = "none";
+document.getElementById("openmenu").style.display = "block";
+    
+$( "#openmenucontent" ).load( "http://kushirikiana.com/njh/loadcategory.php");
 }
 
 </script>
@@ -200,6 +213,8 @@ if (table != null) {
 </head>
 
 <body onLoad="checkonload();" id="bodysun">
+    
+<div id="openmenu"><div id="openmenucontent"></div></div>
     
 <div id="ordertype" class="ordertype">
 <div class="ordertypeinside">
