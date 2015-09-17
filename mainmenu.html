@@ -188,6 +188,12 @@ document.getElementById("restaurantlist").className = "animated fadeIn";
 document.getElementById("restaurantlist").style.display = "block";
 document.getElementById("ordertype").style.display = "none";
 }
+function restaurantpickergonext() {
+var table = prompt("Which table (number) are you seated on?", "");
+if (table != null) {
+    alert('Great, you selected table number: '+table+'. Press OK to place your order now.');
+}
+}
 
 </script>
 
