@@ -12,22 +12,26 @@
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 }
+#bodysun {
+    background-image: url(sun.png);
+    background-size: cover;
+}
         .userdetails {
 	background-color: #FECE7C;
 	padding: 5px;
 }
 .jvhbutton {
 	color: #FFF;
-	background-color: #B3393C;
+	background-color: rgba(0,0,0,0.4);
 	text-align: center;
 	width: 80%;
 	display: block;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-tap-highlight-color: transparent;
 	transition: all 0.5s;
-	line-height: 200%;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	line-height: 300%;
+	margin-top: 15px;
+	margin-bottom: 15px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -124,10 +128,11 @@ function entercode() {
 
 </head>
 
-<body onLoad="checkonload();">
+<body onLoad="checkonload();" id="bodysun">
 
 <div class="userdetails" id="currentaccountuser">
   <script>
+document.write('Welcome, ');
   document.write(localStorage.myname);
   </script>
 </div>
@@ -138,10 +143,11 @@ function entercode() {
 
 <div id="offlinenotice" style="display:none">Is Offline</div>
 
-<div id="status">You currently have <span id="statuspoints"></span> points. Scan a QR code or enter manually to add more.</div>
+<div id="status">You currently have <span id="statuspoints"></span> rewards points. Scan a barcode or enter the code found on your reciept to add more to your account.</div>
 
-<div class="jvhbutton" onClick="scancode()();">Scan QR</div>
+<div class="jvhbutton" onClick="scancode()();">Scan barcode to redeem points</div>
 <div class="jvhbutton" onClick="entercode();">Enter code from receipt</div>
+<div class="jvhbutton" onClick="placeorder();">Place a new order</div>
 
 </body>
 </html>
