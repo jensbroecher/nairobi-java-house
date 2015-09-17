@@ -52,9 +52,9 @@ jvhbutton:focus {
 .ordertype {
 	background-color: #FDCC7E;
 	position: absolute;
-	width: 80%;
-	top: 15%;
-	margin-left: 10%;
+	width: 85%;
+	top: 5%;
+	margin-left: 5%;
 	display: none;
 	z-index: 1;
 }
@@ -66,6 +66,35 @@ jvhbutton:focus {
 .blur {
 	-webkit-filter: blur(8px);
 }
+#restaurantlist {
+    display:none;
+    background-color: #FDCC7E;
+	position: absolute;
+	width: 85%;
+	top: 5%;
+	margin-left: 5%;
+	display: none;
+	z-index: 1;
+}
+#restaurantlistinside {
+	border: 10px solid #B3393C;
+	padding: 10px;
+	text-align: left;
+}
+#restaurantlistinside div {
+    background-color: #FFFFFF;
+	padding-top: 5px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#restaurantlistinside h1 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
 
 </style>
 
@@ -153,6 +182,12 @@ function cancelordertype() {
 document.getElementById("blurbg").className = "";
 document.getElementById("ordertype").style.display = "none";
 }
+function inrestaurant() {
+document.getElementById("blurbg").className = "blur";
+document.getElementById("restaurantlist").className = "animated fadeIn";
+document.getElementById("restaurantlist").style.display = "block";
+document.getElementById("ordertype").style.display = "none";
+}
 
 </script>
 
@@ -163,13 +198,57 @@ document.getElementById("ordertype").style.display = "none";
 <div id="ordertype" class="ordertype">
 <div class="ordertypeinside">
 <center>
-<img src="frommenu.jpg" style="width: 60%; max-width: 250px;">
+<img src="frommenu.jpg" style="width: 80%; max-width: 300px;">
 </center>
 <div class="jvhbutton" onClick="inrestaurant();">In restaurant</div>
-<div class="jvhbutton" onClick="online();">Delivery</div>
+<div class="jvhbutton" onClick="alert('This is not yet supported');">Delivery</div>
 <div class="jvhbutton" onClick="cancelordertype();">Cancel</div>
 </div>
 </div>
+    
+<div id="restaurantlist">
+<div id="restaurantlistinside">
+Please select the restaurant you are visiting today to place your order:<br><br>
+<img src="slideshow.gif" style="width:100%;">
+
+<h1>NAIROBI</h1>
+<div onclick="restaurantpickergonext();">ABC Place, Waiyaki Way</div>
+<div>Adams Arcade, Ngong Road</div>
+<div>Capital Centre, Mombasa Road</div>
+<div>Mama Ngina Downtown, Mama Ngina Street</div>
+<div>Galleria Mall, Langata Road (Opposite Bomas of Kenya)</div>
+<div>Gigiri, Kobil Petrol Station, Limuru Road</div>
+<div>Jomo Kenyatta International Airport (JKIA), GATE 14</div>
+<div>The Junction Mall, Off Ngong/Kingara Road</div>
+<div>Sarit Centre, Westlands</div>
+<div>Uniafric House, Koinange Street</div>
+<div>Upper Hill Medical Centre (UHMC), Ralph Bunche Road</div>
+<div>Yaya Centre, Argwings Kodhek Road</div>
+<div>Kenya Medical Association (KMA), Mara Road</div>
+<div>Valley Arcade, Gitanga Road</div>
+<div>Thika Road Mall, Thika Super Highway</div>
+<div>St. Ellis Building, City Hall Way</div>
+<div>South C, Popo Road, Mugoya Estate next to Nakumatt</div>
+<div>Jomo Kenyatta International Airport (JKIA), Terminal 1B</div>
+<div>Clyde House, Kimathi Street</div>
+<div>Orbit Place, Westlands Road</div>
+<div>Shell Petrol Station, Hurlingham</div>
+<div>Greenspan Mall, Donholm</div>
+<div>Phoenix House, Kenyatta Avenue</div>
+ 
+<h1>NAIVASHA</h1>
+<div>Buffalo Mall, Naivasha</div>
+ 
+<h1>NAKURU</h1>
+<div>Westside Mall, Nairobi-Nakuru Highway</div>
+ 
+<h1>KISUMU</h1>
+<div>West End Mall, Jomo Kenyatta Street</div>
+ 
+<h1>MOMBASA</h1>
+<div>Nyali Town Centre, Links Road</div>
+
+</div></div>
     
 <div id="blurbg">
 
