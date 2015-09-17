@@ -29,7 +29,7 @@
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-tap-highlight-color: transparent;
 	transition: all 0.5s;
-	line-height: 300%;
+	line-height: 280%;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	margin-right: auto;
@@ -48,7 +48,26 @@ jvhbutton:active {
 jvhbutton:focus {
     outline: none;
 }
-        </style>
+            
+.ordertype {
+	background-color: #FDCC7E;
+	position: absolute;
+	width: 80%;
+	top: 15%;
+	margin-left: 10%;
+	display: none;
+	z-index: 1;
+}
+.ordertypeinside {
+	border: 10px solid #B3393C;
+	padding: 10px;
+	text-align: left;
+}
+.blur {
+	-webkit-filter: blur(8px);
+}
+
+</style>
 
         <!-- jQuery -->
         <script type="text/javascript" src="jquery.js"></script>
@@ -124,11 +143,35 @@ $.get( "http://kushirikiana.com/njh/add-points?&username="+whatstheusername+"&po
 function entercode() {
 	alert('This is not yet supported');
 }
+        
+function placeorder() {
+document.getElementById("ordertype").className = "animated zoomIn ordertype";
+document.getElementById("blurbg").className = "blur";
+document.getElementById("ordertype").style.display = "block";
+}
+function cancelordertype() {
+document.getElementById("blurbg").className = "";
+document.getElementById("ordertype").style.display = "none";
+}
+
 </script>
 
 </head>
 
 <body onLoad="checkonload();" id="bodysun">
+    
+<div id="ordertype" class="ordertype">
+<div class="ordertypeinside">
+<center>
+<img src="frommenu.jpg" style="width: 60%; max-width: 250px;">
+</center>
+<div class="jvhbutton" onClick="inrestaurant();">In restaurant</div>
+<div class="jvhbutton" onClick="online();">Delivery</div>
+<div class="jvhbutton" onClick="cancelordertype();">Cancel</div>
+</div>
+</div>
+    
+<div id="blurbg">
 
 <div class="userdetails" id="currentaccountuser">
   <script>
@@ -136,8 +179,6 @@ document.write('Welcome, ');
   document.write(localStorage.myname);
   </script>
 </div>
-
-
 
 <div class="userdetails" id="useremail"></div>
 
@@ -152,6 +193,8 @@ document.write('Welcome, ');
 <center>
 <img src="claim.png" style="width: 40%; max-width: 200px;">
 </center>
+    
+</div>
 
 </body>
 </html>
