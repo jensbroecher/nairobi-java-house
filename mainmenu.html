@@ -104,8 +104,18 @@ jvhbutton:focus {
             padding-top: 20px;
             padding-bottom: 20px;
             }
-
-
+#shoppingcart {
+    background-color: #FFFFFF;
+	position: absolute;
+	width: 85%;
+	top: 5%;
+	margin-left: 5%;
+	z-index: 1000;
+    display: none;
+}
+#shoppingcartlist {
+    padding:10px;
+}
 </style>
 
         <!-- jQuery -->
@@ -120,6 +130,11 @@ jvhbutton:focus {
 
 function onDeviceReady() {
 		
+}
+            
+function cartopen() {
+		document.getElementById('shoppingcartlist').style.display='block';
+		document.getElementById('shoppingcartlist').className = 'animated fadeIn';
 }
 
 function checkonload() {
@@ -213,11 +228,42 @@ document.getElementById("openmenu").style.display = "block";
 $( "#openmenucontent" ).load( "http://kushirikiana.com/njh/loadcategory.php");
 }
 
+    function showcart() {
+    document.getElementById("shoppingcart").style.display = "block";
+    }
+    function hidecart() {
+    document.getElementById("shoppingcart").style.display = "none";
+    }
+    function gopay() {
+    document.getElementById("shoppingcartlist").style.display = "none";
+    document.getElementById("orderbuttons").style.display = "none";
+    document.getElementById("shoppingcartpay").style.display = "block";
+    }
 </script>
 
 </head>
 
 <body onLoad="checkonload();" id="bodysun">
+    
+<div id="shoppingcart" class="animated fadeIn">
+<div id="shoppingcartlist">
+
+</div>
+<div id="shoppingcartpay" style="display:none;">
+<center>
+<br><br>
+<img src="payment.png" style="width: 80%">
+</center>
+</div>
+<center>
+<br>
+<div id="orderbuttons">
+<div onclick="hidecart();" class="backbutton">Order more</div>
+<div onclick="gopay();" class="backbutton">Place order now</div>
+</div>
+<br>
+</center>
+</div>
     
 <div id="openmenu"><div id="openmenucontent"></div></div>
     
@@ -300,6 +346,8 @@ document.write('Welcome, ');
 </center>
     
 </div>
+    
+
 
 </body>
 </html>
